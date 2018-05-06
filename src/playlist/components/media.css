@@ -1,0 +1,44 @@
+.Media {
+  cursor: pointer;
+  min-height: 230px;
+  vertical-align: top;
+  background: #f2f2f2;
+  border: 1px solid #d2d2d2;
+  border-radius: 2px;
+  flex-basis: 20%;
+}
+.Media:hover {
+  background: #f5f5f5;
+}
+
+.Media:hover .Media-cover {
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+
+.Media:hover .Media-title {
+  color: #54547b;
+}
+
+.Media-cover {
+  transition: .3s;
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+
+  width: 100%;
+}
+
+.Media-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.Media-title {
+  margin: 5px 0 0 0;
+  color: #44546b;
+  white-space: normal;
+}
+
+.Media-author {
+  font-size: 12px;
+  margin: 5px 0 0 0;
+}

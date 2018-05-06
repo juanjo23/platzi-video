@@ -1,0 +1,10 @@
+.main-container {
+  display: flex;
+}
+.left-sidebar {
+  background-color: #171B2E;
+}
+.categories-container {
+  width: 100%;
+  padding: 10px;
+}
