@@ -5,12 +5,15 @@ import Related from '../components/related/related'
 import data from '../api.json';
 import ModalContainer from '../components/widgets/modal-container';
 import Modal from '../components/widgets/modal.js';
+import HandleErrors from '../playlist/components/handle-errors';
+import VideoPlayer from '../components/video-player/video-player';
 import './home.css';
 
 class Home extends Component {
   state = {
-    modalVisible: false
+    modalVisible: false,
   }
+
   handleCloseModal = (event) => {
     this.setState({
       modalVisible: false
@@ -24,25 +27,30 @@ class Home extends Component {
   }
 
   render = () => (
-    <HomeLayout>
-      <div className="main-container">
-        <div className="left-sidebar">
-          <Related/>
+    <HandleErrors>
+      <HomeLayout>
+        <div className="main-container">
+          <div className="left-sidebar">
+            <Related/>
+          </div>
+          <div className="categories-container">
+            <Categories
+              handleClick={this.handleCategoryClick}
+              categories={data.categories} />
+          </div>
         </div>
-        <div className="categories-container">
-          <Categories handleClick={this.handleCategoryClick} categories={data.categories} />
-        </div>
-      </div>
-      {
-        this.state.modalVisible &&
-        <ModalContainer>
-          <Modal handleClick={this.handleCloseModal} >
-            <h1>THIs is a portal </h1>
-          </Modal>
-        </ModalContainer>
-      }
-    </HomeLayout>
+        {
+          this.state.modalVisible &&
+          <ModalContainer>
+            <Modal handleClick={this.handleCloseModal} >
+              <VideoPlayer />
+            </Modal>
+          </ModalContainer>
+        }
+      </HomeLayout>
+    </HandleErrors>
   )
+
 }
 
 export default Home;
