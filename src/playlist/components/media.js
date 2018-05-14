@@ -21,11 +21,11 @@ class Media extends Component {
   */
   render = () => {
     const author = this.state.author;
-    const {title, cover} = this.props;
+    const {id, title, cover} = this.props;
     return (
       <div className="Media" onClick={this.props.handleClick}>
         <div className="Media-cover">
-          <img className="Media-image" src={cover} />
+          <img className="Media-image" src={cover} alt={title} id={id} />
           <h3 className="Media-title" > {title}</h3>
           <p className="Media-author" >{author}</p>
         </div>

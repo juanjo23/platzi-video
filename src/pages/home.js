@@ -12,6 +12,7 @@ import './home.css';
 class Home extends Component {
   state = {
     modalVisible: false,
+    media: null
   }
 
   handleCloseModal = (event) => {
@@ -22,7 +23,8 @@ class Home extends Component {
 
   handleCategoryClick = (evt) => {
     this.setState({
-      modalVisible: true
+      modalVisible: true,
+      media: data.categories[0].playlist.find(item => item.id = evt.target.id)
     })
   }
 
@@ -31,7 +33,7 @@ class Home extends Component {
       <HomeLayout>
         <div className="main-container">
           <div className="left-sidebar">
-            <Related/>
+            <Related />
           </div>
           <div className="categories-container">
             <Categories
@@ -43,7 +45,8 @@ class Home extends Component {
           this.state.modalVisible &&
           <ModalContainer>
             <Modal handleClick={this.handleCloseModal} >
-              <VideoPlayer />
+              <VideoPlayer media={this.state.media}>
+              </VideoPlayer>
             </Modal>
           </ModalContainer>
         }
